@@ -7,12 +7,14 @@ package theshapesareright;
 
 import javafx.geometry.Insets;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -37,12 +39,24 @@ public class TheShapesAreRight extends Application {
         ObservableList<String> shapes = FXCollections.observableArrayList(
           "Circle", "Triangle", "Square", "Rectangle", "Diamond");
         ListView<String> Shapes = new ListView<String>(shapes);
+        Shapes.setPrefWidth(150);
+      
         
-        ObservableList<String> colors2 = FXCollections.observableArrayList(
-          "Red", "Orange", "Yellow", "Green", "Blue", "Violet");
         ObservableList<String> colors = FXCollections.observableArrayList(
             "red", "orange", "yellow", "green", "blue", "violet");
         ListView<String> Colors = new ListView<String>(colors);
+        Colors.setPrefWidth(150);
+        
+        ObservableList<String> numOptions = 
+        FXCollections.observableArrayList(
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+        );
+        final ComboBox numShapes = new ComboBox(numOptions);
+        numShapes.setValue("# of Shapes");
         
         class ColorRectCell extends ListCell<String> {
         @Override
@@ -79,10 +93,11 @@ public class TheShapesAreRight extends Application {
 
 	HBox InputBox = new HBox();
 	InputBox.getStyleClass().add("graytheme");
-        InputBox.setSpacing(40);
+        InputBox.setSpacing(10);
         InputBox.setPadding(new Insets(15, 15, 15, 15));
         
         InputBox.getChildren().add(Shapes);
+        InputBox.getChildren().add(numShapes);
         InputBox.getChildren().add(Colors);
         
         HBox ButtonBox = new HBox();
@@ -102,7 +117,19 @@ public class TheShapesAreRight extends Application {
                 
         Scene scene = new Scene(root, 500, 660);
         
-        primaryStage.setTitle("Hello World!");
+        quit.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent event ) {
+		try {
+                    primaryStage.close(); // closes the window
+                    Platform.exit(); // exits the current application thread		
+		} catch ( Exception e ) {
+                    e.printStackTrace(System.err);
+		}
+            }
+	});
+        
+        primaryStage.setTitle("The Shapes Are Right!!");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
