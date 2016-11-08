@@ -19,6 +19,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -37,14 +38,18 @@ public class TheShapesAreRight extends Application {
     public void start(Stage primaryStage) {
         
         ObservableList<String> shapes = FXCollections.observableArrayList(
-          "Circle", "Triangle", "Square", "Rectangle", "Diamond");
+          "Circle", "Oval", "Triangle", "Square", "Rectangle", "Diamond");
         ListView<String> Shapes = new ListView<String>(shapes);
+        Shapes.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         Shapes.setPrefWidth(150);
+        
+        
       
         
         ObservableList<String> colors = FXCollections.observableArrayList(
             "red", "orange", "yellow", "green", "blue", "violet");
         ListView<String> Colors = new ListView<String>(colors);
+        Colors.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         Colors.setPrefWidth(150);
         
         ObservableList<String> numOptions = 
