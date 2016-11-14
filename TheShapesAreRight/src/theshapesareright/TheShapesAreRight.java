@@ -23,6 +23,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
@@ -103,17 +104,17 @@ public class TheShapesAreRight extends Application {
         Ellipse e7 = new Ellipse();
         
         //triangles
-        Polygon p1 = new Polygon();
-        p1.getPoints().addAll(new Double[]{
-            0.0, 0.0,
-            20.0, 10.0,
-            10.0, 20.0 });
-        Polygon p2 = new Polygon();
-        Polygon p3 = new Polygon();
-        Polygon p4 = new Polygon();
-        Polygon p5 = new Polygon();
-        Polygon p6 = new Polygon();
-        Polygon p7 = new Polygon();
+        Polygon t1 = new Polygon();
+        t1.getPoints().addAll(new Double[]{
+            30.0, 0.0,
+            0.0, 52.0,
+            60.0, 52.0 });
+        Polygon t2 = new Polygon();
+        Polygon t3 = new Polygon();
+        Polygon t4 = new Polygon();
+        Polygon t5 = new Polygon();
+        Polygon t6 = new Polygon();
+        Polygon t7 = new Polygon();
         
         
         ObservableList<String> colors = FXCollections.observableArrayList(
@@ -161,12 +162,69 @@ public class TheShapesAreRight extends Application {
         Button quit = new Button();
         quit.setText("Quit");
         
+        VBox v1 = new VBox();
+        v1.getChildren().add(r1);
+        v1.getChildren().add(s1);
+        v1.getChildren().add(d1);
+        v1.getChildren().add(c1);
+        v1.getChildren().add(e1);
+        v1.getChildren().add(t1);
+        VBox v2 = new VBox();
+        v2.getChildren().add(r2);
+        v2.getChildren().add(s2);
+        v2.getChildren().add(d2);
+        v2.getChildren().add(c2);
+        v2.getChildren().add(e2);
+        v2.getChildren().add(t2);
+        VBox v3 = new VBox();
+        v3.getChildren().add(r3);
+        v3.getChildren().add(s3);
+        v3.getChildren().add(d3);
+        v3.getChildren().add(c3);
+        v3.getChildren().add(e3);
+        v3.getChildren().add(t3);
+        VBox v4 = new VBox();
+        v4.getChildren().add(r4);
+        v4.getChildren().add(s4);
+        v4.getChildren().add(d4);
+        v4.getChildren().add(c4);
+        v4.getChildren().add(e4);
+        v4.getChildren().add(t4);
+        VBox v5 = new VBox();
+        v5.getChildren().add(r5);
+        v5.getChildren().add(s5);
+        v5.getChildren().add(d5);
+        v5.getChildren().add(c5);
+        v5.getChildren().add(e5);
+        v5.getChildren().add(t5);
+        VBox v6 = new VBox();
+        v6.getChildren().add(r6);
+        v6.getChildren().add(s6);
+        v6.getChildren().add(d6);
+        v6.getChildren().add(c6);
+        v6.getChildren().add(e6);
+        v6.getChildren().add(t6);
+        VBox v7 = new VBox();
+        v7.getChildren().add(r7);
+        v7.getChildren().add(s7);
+        v7.getChildren().add(d7);
+        v7.getChildren().add(c7);
+        v7.getChildren().add(e7);
+        v7.getChildren().add(t7);
+        
+        
         AnchorPane anchorPane = new AnchorPane();
 	anchorPane.setMinSize(500.0, 400.0);
         anchorPane.setMaxSize(500.0, 400.0);
         anchorPane.setPrefSize(500.0, 400.0);
         
-        anchorPane.getChildren().add(r1);
+        anchorPane.getChildren().add(v1);
+        anchorPane.getChildren().add(v2);
+        anchorPane.getChildren().add(v3);
+        anchorPane.getChildren().add(v4);
+        anchorPane.getChildren().add(v5);
+        anchorPane.getChildren().add(v6);
+        anchorPane.getChildren().add(v7);
         
 
 	HBox InputBox = new HBox();
