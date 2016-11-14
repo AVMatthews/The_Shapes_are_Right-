@@ -24,6 +24,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Callback;
 
@@ -43,8 +46,75 @@ public class TheShapesAreRight extends Application {
         Shapes.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         Shapes.setPrefWidth(150);
         
+        //rectangles
+        Rectangle r1 = new Rectangle();
+        r1.setX(50);
+        r1.setY(50);
+        r1.setWidth(200);
+        r1.setHeight(100);
+        Rectangle r2 = new Rectangle();
+        Rectangle r3 = new Rectangle();
+        Rectangle r4 = new Rectangle();
+        Rectangle r5 = new Rectangle();
+        Rectangle r6 = new Rectangle();
+        Rectangle r7 = new Rectangle();
         
-      
+        //squares
+        Rectangle s1 = new Rectangle();
+        Rectangle s2 = new Rectangle();
+        Rectangle s3 = new Rectangle();
+        Rectangle s4 = new Rectangle();
+        Rectangle s5 = new Rectangle();
+        Rectangle s6 = new Rectangle();
+        Rectangle s7 = new Rectangle();
+        
+        //diamonds
+        Rectangle d1 = new Rectangle();
+        Rectangle d2 = new Rectangle();
+        Rectangle d3 = new Rectangle();
+        Rectangle d4 = new Rectangle();
+        Rectangle d5 = new Rectangle();
+        Rectangle d6 = new Rectangle();
+        Rectangle d7 = new Rectangle();
+        
+        //circles
+        Circle c1 = new Circle();
+        c1.setCenterX(100.0f);
+        c1.setCenterY(100.0f);
+        c1.setRadius(50.0f);
+        Circle c2 = new Circle();
+        Circle c3 = new Circle();
+        Circle c4 = new Circle();
+        Circle c5 = new Circle();
+        Circle c6 = new Circle();
+        Circle c7 = new Circle();
+        
+        //ovals
+        Ellipse e1 = new Ellipse();
+        e1.setCenterX(50.0f);
+        e1.setCenterY(50.0f);
+        e1.setRadiusX(50.0f);
+        e1.setRadiusY(25.0f);
+        Ellipse e2 = new Ellipse();
+        Ellipse e3 = new Ellipse();
+        Ellipse e4 = new Ellipse();
+        Ellipse e5 = new Ellipse();
+        Ellipse e6 = new Ellipse();
+        Ellipse e7 = new Ellipse();
+        
+        //triangles
+        Polygon p1 = new Polygon();
+        p1.getPoints().addAll(new Double[]{
+            0.0, 0.0,
+            20.0, 10.0,
+            10.0, 20.0 });
+        Polygon p2 = new Polygon();
+        Polygon p3 = new Polygon();
+        Polygon p4 = new Polygon();
+        Polygon p5 = new Polygon();
+        Polygon p6 = new Polygon();
+        Polygon p7 = new Polygon();
+        
         
         ObservableList<String> colors = FXCollections.observableArrayList(
             "red", "orange", "yellow", "green", "blue", "violet");
@@ -95,6 +165,9 @@ public class TheShapesAreRight extends Application {
 	anchorPane.setMinSize(500.0, 400.0);
         anchorPane.setMaxSize(500.0, 400.0);
         anchorPane.setPrefSize(500.0, 400.0);
+        
+        anchorPane.getChildren().add(r1);
+        
 
 	HBox InputBox = new HBox();
 	InputBox.getStyleClass().add("graytheme");
