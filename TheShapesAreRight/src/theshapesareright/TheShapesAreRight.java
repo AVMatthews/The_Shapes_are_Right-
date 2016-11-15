@@ -5,12 +5,18 @@
  */
 package theshapesareright;
 
+import java.util.ArrayList;
+import java.util.Random;
 import javafx.geometry.Insets;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,12 +37,16 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Callback;
 
-
 /**
  *
- * @author abigail
+ * @author Abigail and Kristina
  */
+
 public class TheShapesAreRight extends Application {
+    
+    // Global variables
+    int numberOfShapes = 0; // number of shapes dealed to user during game
+    String currentShape; // current card user will be trying to guess, currently not in use
     
     @Override
     public void start(Stage primaryStage) {
@@ -115,35 +125,29 @@ public class TheShapesAreRight extends Application {
         Polygon t5 = new Polygon();
         Polygon t6 = new Polygon();
         Polygon t7 = new Polygon();
-        
-        
+   
         ObservableList<String> colors = FXCollections.observableArrayList(
             "red", "orange", "yellow", "green", "blue", "violet");
         ListView<String> Colors = new ListView<String>(colors);
         Colors.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         Colors.setPrefWidth(150);
         
-        ObservableList<String> numOptions = 
-        FXCollections.observableArrayList(
-            "3",
-            "4",
-            "5",
-            "6",
-            "7"
-        );
+        ObservableList<String> numOptions = FXCollections.observableArrayList(
+            "3", "5", "7"); //numbers must be odd and between 3-7
+        
         final ComboBox numShapes = new ComboBox(numOptions);
-        numShapes.setValue("# of Shapes");
+        numShapes.setValue("Number of Shapes");
         
         class ColorRectCell extends ListCell<String> {
-        @Override
-        public void updateItem(String item, boolean empty) {
-            super.updateItem(item, empty);
-            Rectangle rect = new Rectangle(100, 20);
-            if (item != null) {
-                rect.setFill(Color.web(item));
-                setGraphic(rect);
+            @Override
+            public void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                Rectangle rect = new Rectangle(100, 20);
+                if (item != null) {
+                    rect.setFill(Color.web(item));
+                    setGraphic(rect);
+                }
             }
-        }
         }
         
         Colors.setCellFactory(new Callback<ListView<String>, 
@@ -154,8 +158,7 @@ public class TheShapesAreRight extends Application {
                 }
             }
         );
-        
-        
+       
         Button Go = new Button();
         Go.setText("GO");
         
@@ -169,6 +172,7 @@ public class TheShapesAreRight extends Application {
         v1.getChildren().add(c1);
         v1.getChildren().add(e1);
         v1.getChildren().add(t1);
+        
         VBox v2 = new VBox();
         v2.getChildren().add(r2);
         v2.getChildren().add(s2);
@@ -176,6 +180,7 @@ public class TheShapesAreRight extends Application {
         v2.getChildren().add(c2);
         v2.getChildren().add(e2);
         v2.getChildren().add(t2);
+        
         VBox v3 = new VBox();
         v3.getChildren().add(r3);
         v3.getChildren().add(s3);
@@ -183,6 +188,7 @@ public class TheShapesAreRight extends Application {
         v3.getChildren().add(c3);
         v3.getChildren().add(e3);
         v3.getChildren().add(t3);
+        
         VBox v4 = new VBox();
         v4.getChildren().add(r4);
         v4.getChildren().add(s4);
@@ -190,6 +196,7 @@ public class TheShapesAreRight extends Application {
         v4.getChildren().add(c4);
         v4.getChildren().add(e4);
         v4.getChildren().add(t4);
+        
         VBox v5 = new VBox();
         v5.getChildren().add(r5);
         v5.getChildren().add(s5);
@@ -197,6 +204,7 @@ public class TheShapesAreRight extends Application {
         v5.getChildren().add(c5);
         v5.getChildren().add(e5);
         v5.getChildren().add(t5);
+        
         VBox v6 = new VBox();
         v6.getChildren().add(r6);
         v6.getChildren().add(s6);
@@ -204,6 +212,7 @@ public class TheShapesAreRight extends Application {
         v6.getChildren().add(c6);
         v6.getChildren().add(e6);
         v6.getChildren().add(t6);
+        
         VBox v7 = new VBox();
         v7.getChildren().add(r7);
         v7.getChildren().add(s7);
@@ -211,7 +220,6 @@ public class TheShapesAreRight extends Application {
         v7.getChildren().add(c7);
         v7.getChildren().add(e7);
         v7.getChildren().add(t7);
-        
         
         AnchorPane anchorPane = new AnchorPane();
 	anchorPane.setMinSize(500.0, 400.0);
@@ -225,7 +233,6 @@ public class TheShapesAreRight extends Application {
         anchorPane.getChildren().add(v5);
         anchorPane.getChildren().add(v6);
         anchorPane.getChildren().add(v7);
-        
 
 	HBox InputBox = new HBox();
 	InputBox.getStyleClass().add("graytheme");
@@ -253,6 +260,76 @@ public class TheShapesAreRight extends Application {
                 
         Scene scene = new Scene(root, 500, 660);
         
+        Go.setOnAction( new EventHandler<ActionEvent>(){
+            @Override
+            public void handle( ActionEvent event ){
+                try{
+                    /* GATHER ALL USER INPUT */
+              
+                    String thisNum = numShapes.getValue().toString();
+                    // set global variable for number of shapes to be created
+                    switch(thisNum){
+                        case "3":
+                            numberOfShapes = 3; 
+                            System.out.println(numberOfShapes);
+                            break;
+                        case "5":
+                            numberOfShapes = 5;
+                            System.out.println(numberOfShapes);
+                            break;
+                        case "7":
+                            numberOfShapes = 7;
+                            System.out.println(numberOfShapes);
+                            break;
+                    }
+               
+                    // creates an arraylist for the selected shapes to be used
+                    ArrayList<String> chosenShapes = new ArrayList(); 
+                    chosenShapes.addAll( Shapes.getSelectionModel().getSelectedItems() );
+                    // getting number of colors selected for randomization
+                    int numOfShapes = 0;
+                    for (String chosenShape : chosenShapes) {
+                        numOfShapes++;
+                    }
+                    // converts arraylist to array
+                    String [] arrayShapes = chosenShapes.toArray( new String[chosenShapes.size()] );
+                
+                    // creates an arraylist for the selected colors to be used
+                    ArrayList<String> chosenColors = new ArrayList();
+                    chosenColors.addAll( Colors.getSelectionModel().getSelectedItems() );
+                    // getting number of colors selected for randomization
+                    int numOfColors = 0;
+                    for(String chosenColor : chosenColors){
+                        numOfColors++;
+                    }
+                    // converts arraylist to array
+                    String [] arrayColors = chosenColors.toArray( new String[chosenColors.size()] );
+                   
+                    /* DEAL OUT RANDOMIZED SHAPES/COLORS */
+                    
+                    String [] shapePair = new String[9];
+                    Random rand = new Random();
+                    for(int i = 0; i < numberOfShapes; i++){
+                       // rand.nextInt(numOfColors/Shapes) --> number of colors/shapes rand will choose through
+                       shapePair[i] = arrayColors[rand.nextInt(numOfColors)] + " " + arrayShapes[rand.nextInt(numOfShapes)];
+                       System.out.println(shapePair[i]);
+                    }
+                 
+                    //keep track of score, must play 3 rounds per 1 game
+                    //each new round have same colors/shapes originally chosen
+                    //they can only choose new options by starting over
+                    //use dialog boxes for user to guess shapes
+                    //^you must tell the user what types of shapes they have, but not the order
+                    //i say create rectangles for cards, have the shape design 
+                    //color on the back when they are "flipped"
+                    //Colors.getSelectionModel().getSelectedItem()
+            
+                }catch ( ArrayIndexOutOfBoundsException aiobe ){ 
+                    aiobe.printStackTrace(System.err);
+                }
+            }
+       });
+        
         quit.setOnAction( new EventHandler<ActionEvent>() {
             @Override
             public void handle( ActionEvent event ) {
@@ -265,7 +342,7 @@ public class TheShapesAreRight extends Application {
             }
 	});
         
-        primaryStage.setTitle("The Shapes Are Right!!");
+        primaryStage.setTitle("The Shapes Are Right!");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
