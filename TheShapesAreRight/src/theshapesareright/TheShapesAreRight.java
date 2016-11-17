@@ -262,13 +262,19 @@ public class TheShapesAreRight extends Application {
         ObservableList<String> numOptions = 
         FXCollections.observableArrayList(
             "3",
-            "4",
             "5",
-            "6",
             "7"
         );
         final ComboBox numShapes = new ComboBox(numOptions);
         numShapes.setValue("# of Shapes");
+        
+        
+        ObservableList<String> cardChoices = 
+        FXCollections.observableArrayList(
+           
+        );
+        final ComboBox Choices = new ComboBox(cardChoices);
+        Choices.setValue("Card Choices");
         
         class ColorRectCell extends ListCell<String> {
         @Override
@@ -291,9 +297,14 @@ public class TheShapesAreRight extends Application {
             }
         );
         
+        Button Flip = new Button();
+        Flip.setText("Flip");
         
         Button Go = new Button();
         Go.setText("GO");
+        
+        Button Reset = new Button();
+        Reset.setText("Reset");
         
         Button quit = new Button();
         quit.setText("Quit");
@@ -376,6 +387,18 @@ public class TheShapesAreRight extends Application {
         gridPane.add(v6, 5, 0);
         gridPane.add(v7, 6, 0);
         
+        
+        HBox FlipBox = new HBox();
+	FlipBox.getStyleClass().add("graytheme");
+        FlipBox.setPadding(new Insets(5, 5, 5, 5));
+        
+        FlipBox.getChildren().add(Flip);
+        
+        HBox ChoicesBox = new HBox();
+	ChoicesBox.getStyleClass().add("graytheme");
+        ChoicesBox.setPadding(new Insets(5, 5, 5, 5));
+        
+        ChoicesBox.getChildren().add(Choices);
 
 	HBox InputBox = new HBox();
 	InputBox.getStyleClass().add("graytheme");
@@ -392,14 +415,17 @@ public class TheShapesAreRight extends Application {
         ButtonBox.setPadding(new Insets(0, 15, 15, 15));
         
         ButtonBox.getChildren().add(quit);
+        ButtonBox.getChildren().add(Reset);
         ButtonBox.getChildren().add(Go);
         
         GridPane root = new GridPane();
 	root.getStyleClass().add("graytheme");
               
         root.add(gridPane, 0, 0);
-        root.add(InputBox, 0, 1);
-        root.add(ButtonBox, 0, 2);
+        root.add(FlipBox, 0, 1);
+        root.add(ChoicesBox, 0, 2);
+        root.add(InputBox, 0, 3);
+        root.add(ButtonBox, 0, 4);
                 
         Scene scene = new Scene(root, 630, 660);
         
