@@ -5,7 +5,9 @@
  */
 package theshapesareright;
 
+import static java.awt.Color.red;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import javafx.geometry.Insets;
 import javafx.application.Application;
@@ -51,7 +53,10 @@ public class TheShapesAreRight extends Application {
     
     // Global variables
     int numberOfShapes = 0; // number of shapes dealed to user during game
-    String currentShape; // current card user will be trying to guess, currently not in use
+    String currentShape; // current card user will be trying to guess
+    int score = 0; //players score
+//    ArrayList<String> shuffledChoices = new ArrayList(); //the shuffled list as 
+    //opposed to the order the list appears on the drop down list
     
     @Override
     public void start(Stage primaryStage) {
@@ -269,8 +274,13 @@ public class TheShapesAreRight extends Application {
                 
         );
         
+        ObservableList<String> shuffledChoices = FXCollections.observableArrayList(
+        
+        );
+        
         final ComboBox Choices = new ComboBox(cardChoices);
         Choices.setValue("Card Choices");
+        Choices.setDisable(true); //do not show yet
         
         final ComboBox numShapes = new ComboBox(numOptions);
         numShapes.setValue("Number of Shapes");
@@ -298,6 +308,7 @@ public class TheShapesAreRight extends Application {
        
         Button Flip = new Button();
         Flip.setText("Flip");
+        Flip.setDisable(true); //this button turns on when they hit "Go"
         
         Button Go = new Button();
         Go.setText("GO");
@@ -308,7 +319,7 @@ public class TheShapesAreRight extends Application {
         Button quit = new Button();
         quit.setText("Quit");
         
-                GridPane v1 = new GridPane();
+        GridPane v1 = new GridPane();
         v1.setPadding(new Insets(15, 15, 15, 15));
         v1.setVgap(10);
         v1.add(r1, 0, 0);
@@ -373,12 +384,60 @@ public class TheShapesAreRight extends Application {
         v7.add(t7, 0, 5);
         
         v1.setVisible(false);
+        r1.setVisible(false);
+        s1.setVisible(false);
+        d1.setVisible(false);
+        c1.setVisible(false);
+        e1.setVisible(false);
+        t1.setVisible(false);
+        
         v2.setVisible(false);
+        r2.setVisible(false);
+        s2.setVisible(false);
+        d2.setVisible(false);
+        c2.setVisible(false);
+        e2.setVisible(false);
+        t2.setVisible(false);
+        
         v3.setVisible(false);
+        r3.setVisible(false);
+        s3.setVisible(false);
+        d3.setVisible(false);
+        c3.setVisible(false);
+        e3.setVisible(false);
+        t3.setVisible(false);
+        
         v4.setVisible(false);
+        r4.setVisible(false);
+        s4.setVisible(false);
+        d4.setVisible(false);
+        c4.setVisible(false);
+        e4.setVisible(false);
+        t4.setVisible(false);
+        
         v5.setVisible(false);
+        r5.setVisible(false);
+        s5.setVisible(false);
+        d5.setVisible(false);
+        c5.setVisible(false);
+        e5.setVisible(false);
+        t5.setVisible(false);
+        
         v6.setVisible(false);
+        r6.setVisible(false);
+        s6.setVisible(false);
+        d6.setVisible(false);
+        c6.setVisible(false);
+        e6.setVisible(false);
+        t6.setVisible(false);
+        
         v7.setVisible(false);
+        r7.setVisible(false);
+        s7.setVisible(false);
+        d7.setVisible(false);
+        c7.setVisible(false);
+        e7.setVisible(false);
+        t7.setVisible(false);
         
         GridPane gridPane = new GridPane();
 	gridPane.setMinSize(630.0, 400.0);
@@ -434,11 +493,7 @@ public class TheShapesAreRight extends Application {
                 
         Scene scene = new Scene(root, 500, 660);
         
-        Go.setOnAction( new EventHandler<ActionEvent>(){ 
-        /* have go, quit, list views, and reset available to start
-            off. when user clicks go, turn off the above buttons and 
-            instead turn on flip, card choices, while keeping quit
-            and reset */
+        Go.setOnAction( new EventHandler<ActionEvent>(){
             @Override
             public void handle( ActionEvent event ){
                 try{
@@ -485,24 +540,22 @@ public class TheShapesAreRight extends Application {
                     /* DEAL OUT RANDOMIZED SHAPES/COLORS */
                     String [] shapePair = new String[9];
                     Random rand = new Random();
+                    
                     for(int i = 0; i < numberOfShapes; i++){
                        // rand.nextInt(numOfColors/Shapes) --> number of colors/shapes rand will choose through
                        shapePair[i] = arrayColors[rand.nextInt(numOfColors)] + " " + arrayShapes[rand.nextInt(numOfShapes)];
-                       cardChoices.addAll(shapePair[i]);
+                       cardChoices.addAll(shapePair[i]); //the options the user can select from
+                       shuffledChoices.addAll(shapePair[i]); //the same options, but shuffled for guessing purposes
                     }
                     
-                    /* PRESENT SHAPES */
-                    // you make the shapes visible, somehow...
-                    // but you also have to put them behind a card
-                    // you can set the 
-                    
-                    // now you must display the cards, which ever shapes were created based on their input
-                    // must be in a large if/else block that displays 
-                         
-                    //keep track of score, must play 3 rounds per 1 game
-                    //each new round have same colors/shapes originally chose
-                    //Colors.getSelectionModel().getSelectedItem()
-            
+                    //turn off access to buttons/lists once they begin choosing shapes
+                    Go.setDisable(true); 
+                    Colors.setDisable(true); 
+                    Shapes.setDisable(true);
+                    numShapes.setDisable(true);
+                    //turn on access so player can begin guessing shapes
+                    Flip.setDisable(false); 
+                    Choices.setDisable(false);
                 }catch ( ArrayIndexOutOfBoundsException aiobe ){ 
                     aiobe.printStackTrace(System.err);
                 }
@@ -519,7 +572,29 @@ public class TheShapesAreRight extends Application {
                     // global variable here, then continue to check and 
                     // flip cards
                     
-                    System.out.println("You have clicked on the Flip button");
+                    //shuffle the order of their choices here
+                    Collections.shuffle(shuffledChoices);
+                    //iterate through each shape the user chooses to guess with
+                    //after the user selects that shape, should I remove it from the list of options to choose from?
+                    currentShape = Choices.getValue().toString();
+                    //you will figure out which order the shapes are in, based on the
+                    //shuffled list, set those up accordingly, then test the currentShape
+                    //with whatever is first in line
+                    
+                    switch(numberOfShapes){
+                        case 3:
+                            //display the 3 middle shapes
+                            break;
+                            
+                        case 5:
+                            //display the 5 most middle shapes
+                            break;
+                            
+                        case 7:
+                            //display all shapes
+                            break;
+                    }
+//                    }
                     
 		} catch ( Exception e ) {
                     e.printStackTrace(System.err);
