@@ -310,74 +310,82 @@ public class TheShapesAreRight extends Application {
         quit.setText("Quit");
         
         GridPane v1 = new GridPane();
-        v1.setPadding(new Insets(15, 15, 15, 15));
-        v1.setVgap(10);
+        v1.setPadding(new Insets(20, 10, 20, 10));
+        v1.setStyle("-fx-border: 2px solid; -fx-border-color: red;");
+        //v1.setVgap(10);
         v1.add(r1, 0, 0);
-        v1.add(s1, 0, 1);
-        v1.add(d1, 0, 2);
-        v1.add(c1, 0, 3);
-        v1.add(e1, 0, 4);
-        v1.add(t1, 0, 5);
+        v1.add(s1, 0, 0);
+        v1.add(d1, 0, 0);
+        v1.add(c1, 0, 0);
+        v1.add(e1, 0, 0);
+        v1.add(t1, 0, 0);
         GridPane v2 = new GridPane();
-        v2.setPadding(new Insets(15, 15, 15, 15));
-        v2.setVgap(10);
-        v2.add(r2, 0, 0);
-        v2.add(s2, 0, 1);
-        v2.add(d2, 0, 2);
-        v2.add(c2, 0, 3);
-        v2.add(e2, 0, 4);
-        v2.add(t2, 0, 5);
+        v2.setPadding(new Insets(20, 10, 20, 10));
+        v2.setStyle("-fx-border: 2px solid; -fx-border-color: black;");
+        //v2.add(r2, 0, 0);
+        v2.add(s2, 0, 0);
+        v2.add(d2, 0, 0);
+        v2.add(c2, 0, 0);
+        v2.add(e2, 0, 0);
+        v2.add(t2, 0, 0);
         GridPane v3 = new GridPane();
-        v3.setPadding(new Insets(15, 15, 15, 15));
-        v3.setVgap(10);
+        v3.setPadding(new Insets(20, 10, 20, 10));
+        v3.setStyle("-fx-border: 2px solid; -fx-border-color: red;");
+        //v3.setVgap(10);
         v3.add(r3, 0, 0);
-        v3.add(s3, 0, 1);
-        v3.add(d3, 0, 2);
-        v3.add(c3, 0, 3);
-        v3.add(e3, 0, 4);
-        v3.add(t3, 0, 5);
+        v3.add(s3, 0, 0);
+        v3.add(d3, 0, 0);
+        v3.add(c3, 0, 0);
+        v3.add(e3, 0, 0);
+        v3.add(t3, 0, 0);
         GridPane v4 = new GridPane();
-        v4.setPadding(new Insets(15, 15, 15, 15));
-        v4.setVgap(10);
+        v4.setPadding(new Insets(20, 10, 20, 10));
+        v4.setStyle("-fx-border: 2px solid; -fx-border-color: black;");
+        //v4.setVgap(10);
         v4.add(r4, 0, 0);
-        v4.add(s4, 0, 1);
-        v4.add(d4, 0, 2);
-        v4.add(c4, 0, 3);
-        v4.add(e4, 0, 4);
-        v4.add(t4, 0, 5);
+        v4.add(s4, 0, 0);
+        v4.add(d4, 0, 0);
+        v4.add(c4, 0, 0);
+        v4.add(e4, 0, 0);
+        v4.add(t4, 0, 0);
         GridPane v5 = new GridPane();
-        v5.setPadding(new Insets(15, 15, 15, 15));
-        v5.setVgap(10);
+        v5.setPadding(new Insets(20, 10, 20, 10));
+        v5.setStyle("-fx-border: 2px solid; -fx-border-color: red;");
+        //v5.setVgap(10);
         v5.add(r5, 0, 0);
-        v5.add(s5, 0, 1);
-        v5.add(d5, 0, 2);
-        v5.add(c5, 0, 3);
-        v5.add(e5, 0, 4);
-        v5.add(t5, 0, 5);
+        v5.add(s5, 0, 0);
+        v5.add(d5, 0, 0);
+        v5.add(c5, 0, 0);
+        v5.add(e5, 0, 0);
+        v5.add(t5, 0, 0);
         GridPane v6 = new GridPane();
-        v6.setPadding(new Insets(15, 15, 15, 15));
-        v6.setVgap(10);
+        v6.setPadding(new Insets(20, 10, 20, 10));
+        v6.setStyle("-fx-border: 2px solid; -fx-border-color: black;");
+        // v6.setVgap(10);
         v6.add(r6, 0, 0);
-        v6.add(s6, 0, 1);
-        v6.add(d6, 0, 2);
-        v6.add(c6, 0, 3);
-        v6.add(e6, 0, 4);
-        v6.add(t6, 0, 5);
+        v6.add(s6, 0, 0);
+        v6.add(d6, 0, 0);
+        v6.add(c6, 0, 0);
+        v6.add(e6, 0, 0);
+        v6.add(t6, 0, 0);
         GridPane v7 = new GridPane();
-        v7.setPadding(new Insets(15, 15, 15, 15));
-        v7.setVgap(10);
+        v7.setPadding(new Insets(20, 10, 20, 10));
+        v7.setStyle("-fx-border: 2px solid; -fx-border-color: red;");
+        //v7.setVgap(10);
         v7.add(r7, 0, 0);
-        v7.add(s7, 0, 1);
-        v7.add(d7, 0, 2);
-        v7.add(c7, 0, 3);
-        v7.add(e7, 0, 4);
-        v7.add(t7, 0, 5);
+        v7.add(s7, 0, 0);
+        v7.add(d7, 0, 0);
+        v7.add(c7, 0, 0);
+        v7.add(e7, 0, 0);
+        v7.add(t7, 0, 0);
         
         
         GridPane gridPane = new GridPane();
-	gridPane.setMinSize(630.0, 400.0);
-        gridPane.setMaxSize(630.0, 400.0);
-        gridPane.setPrefSize(630.0, 400.0);
+	gridPane.setMinSize(630.0, 120.0);
+        gridPane.setMaxSize(630.0, 100.0);
+        gridPane.setPrefSize(630.0, 100.0);
+        gridPane.setPadding(new Insets(10, 10, 10, 10));
+        gridPane.setHgap(10);
         
         gridPane.add(v1, 0, 0);
         gridPane.add(v2, 1, 0);
@@ -390,20 +398,20 @@ public class TheShapesAreRight extends Application {
         
         HBox FlipBox = new HBox();
 	FlipBox.getStyleClass().add("graytheme");
-        FlipBox.setPadding(new Insets(5, 5, 5, 5));
+        FlipBox.setPadding(new Insets(5, 5, 5, 305));
         
         FlipBox.getChildren().add(Flip);
         
         HBox ChoicesBox = new HBox();
 	ChoicesBox.getStyleClass().add("graytheme");
-        ChoicesBox.setPadding(new Insets(5, 5, 5, 5));
+        ChoicesBox.setPadding(new Insets(5, 5, 5, 255));
         
         ChoicesBox.getChildren().add(Choices);
 
 	HBox InputBox = new HBox();
 	InputBox.getStyleClass().add("graytheme");
         InputBox.setSpacing(10);
-        InputBox.setPadding(new Insets(15, 15, 15, 15));
+        InputBox.setPadding(new Insets(15, 15, 15, 100));
         
         InputBox.getChildren().add(Shapes);
         InputBox.getChildren().add(numShapes);
@@ -427,7 +435,7 @@ public class TheShapesAreRight extends Application {
         root.add(InputBox, 0, 3);
         root.add(ButtonBox, 0, 4);
                 
-        Scene scene = new Scene(root, 630, 660);
+        Scene scene = new Scene(root, 655, 455);
         
         quit.setOnAction( new EventHandler<ActionEvent>() {
             @Override
