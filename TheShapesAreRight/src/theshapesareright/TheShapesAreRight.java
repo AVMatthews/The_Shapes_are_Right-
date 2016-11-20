@@ -1,5 +1,8 @@
 package theshapesareright;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 import javafx.geometry.Insets;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -34,6 +37,12 @@ import javafx.util.Callback;
  * @author abigail
  */
 public class TheShapesAreRight extends Application {
+    
+    // Global variables
+    int numberOfShapes = 0; // number of shapes dealed to user during game
+    String currentShape = null; // current card user will be trying to guess
+    int score = 0; //players score
+    int timeThrough = 0; //how the program will know to switch GridPanes and flip the right card
     
     @Override
     public void start(Stage primaryStage) {
@@ -260,7 +269,7 @@ public class TheShapesAreRight extends Application {
         Colors.setPrefWidth(150);
         
         ObservableList<String> numOptions = 
-        FXCollections.observableArrayList(
+                FXCollections.observableArrayList(
             "3",
             "5",
             "7"
@@ -268,13 +277,18 @@ public class TheShapesAreRight extends Application {
         final ComboBox numShapes = new ComboBox(numOptions);
         numShapes.setValue("# of Shapes");
         
+        ObservableList<String> shuffledChoices = 
+                FXCollections.observableArrayList(
+        
+        );
         
         ObservableList<String> cardChoices = 
-        FXCollections.observableArrayList(
+                FXCollections.observableArrayList(
            
         );
         final ComboBox Choices = new ComboBox(cardChoices);
         Choices.setValue("Card Choices");
+        Choices.setDisable(true); 
         
         class ColorRectCell extends ListCell<String> {
         @Override
@@ -299,6 +313,7 @@ public class TheShapesAreRight extends Application {
         
         Button Flip = new Button();
         Flip.setText("Flip");
+        Flip.setDisable(true); 
         
         Button Go = new Button();
         Go.setText("GO");
@@ -378,7 +393,63 @@ public class TheShapesAreRight extends Application {
         v7.add(c7, 0, 0);
         v7.add(e7, 0, 0);
         v7.add(t7, 0, 0);
+
+        v1.setVisible(false);
+        r1.setVisible(false);
+        s1.setVisible(false);
+        d1.setVisible(false);
+        c1.setVisible(false);
+        e1.setVisible(false);
+        t1.setVisible(false);
         
+        v2.setVisible(false);
+        r2.setVisible(false);
+        s2.setVisible(false);
+        d2.setVisible(false);
+        c2.setVisible(false);
+        e2.setVisible(false);
+        t2.setVisible(false);
+        
+        v3.setVisible(false);
+        r3.setVisible(false);
+        s3.setVisible(false);
+        d3.setVisible(false);
+        c3.setVisible(false);
+        e3.setVisible(false);
+        t3.setVisible(false);
+        
+        v4.setVisible(false);
+        r4.setVisible(false);
+        s4.setVisible(false);
+        d4.setVisible(false);
+        c4.setVisible(false);
+        e4.setVisible(false);
+        t4.setVisible(false);
+        
+        v5.setVisible(false);
+        r5.setVisible(false);
+        s5.setVisible(false);
+        d5.setVisible(false);
+        c5.setVisible(false);
+        e5.setVisible(false);
+        t5.setVisible(false);
+        
+        v6.setVisible(false);
+        r6.setVisible(false);
+        s6.setVisible(false);
+        d6.setVisible(false);
+        c6.setVisible(false);
+        e6.setVisible(false);
+        t6.setVisible(false);
+        
+        v7.setVisible(false);
+        r7.setVisible(false);
+        s7.setVisible(false);
+        d7.setVisible(false);
+        c7.setVisible(false);
+        e7.setVisible(false);
+        t7.setVisible(false);
+                
         
         GridPane gridPane = new GridPane();
 	gridPane.setMinSize(630.0, 120.0);
@@ -386,7 +457,8 @@ public class TheShapesAreRight extends Application {
         gridPane.setPrefSize(630.0, 100.0);
         gridPane.setPadding(new Insets(10, 10, 10, 10));
         gridPane.setHgap(10);
-        
+       
+
         gridPane.add(v1, 0, 0);
         gridPane.add(v2, 1, 0);
         gridPane.add(v3, 2, 0);
@@ -436,6 +508,1654 @@ public class TheShapesAreRight extends Application {
         root.add(ButtonBox, 0, 4);
                 
         Scene scene = new Scene(root, 655, 455);
+        
+                
+        Go.setOnAction( new EventHandler<ActionEvent>(){
+            @Override
+            public void handle( ActionEvent event ){
+                try{
+                    /* GATHER ALL USER INPUT */
+                    String thisNum = numShapes.getValue().toString();
+                    // set global variable for number of shapes to be created
+                    switch(thisNum){
+                        case "3":
+                            numberOfShapes = 3; 
+                            break;
+                        case "5":
+                            numberOfShapes = 5;
+                            break;
+                        case "7":
+                            numberOfShapes = 7;
+                            break;
+                    }
+               
+                    // creates an arraylist for the selected shapes to be used
+                    ArrayList<String> chosenShapes = new ArrayList(); 
+                    chosenShapes.addAll( Shapes.getSelectionModel().getSelectedItems() );
+                    // getting number of colors selected for randomization
+                    int numOfShapes = 0;
+                    for (String chosenShape : chosenShapes) {
+                        numOfShapes++;
+                    }
+                    // converts arraylist to array
+                    String [] arrayShapes = chosenShapes.toArray( new String[chosenShapes.size()] );
+                
+                    // creates an arraylist for the selected colors to be used
+                    ArrayList<String> chosenColors = new ArrayList();
+                    chosenColors.addAll( Colors.getSelectionModel().getSelectedItems() );
+                    // getting number of colors selected for randomization
+                    int numOfColors = 0;
+                    for(String chosenColor : chosenColors){
+                        numOfColors++;
+                    }
+                    // converts arraylist to array
+                    String [] arrayColors = chosenColors.toArray( new String[chosenColors.size()] );
+                   
+                    /* DEAL OUT RANDOMIZED SHAPES/COLORS */
+                    String [] shapePair = new String[9];
+                    Random rand = new Random();
+                    
+                    for(int i = 0; i < numberOfShapes; i++){
+                       // rand.nextInt(numOfColors/Shapes) --> number of colors/shapes rand will choose through
+                       shapePair[i] = arrayColors[rand.nextInt(numOfColors)] + " " + arrayShapes[rand.nextInt(numOfShapes)];
+                       cardChoices.addAll(shapePair[i]); //the options the user can select from
+                       shuffledChoices.addAll(shapePair[i]); //the same options, but shuffled for guessing purposes
+                    }
+                    //turn off access to buttons/lists once they begin choosing shapes
+                    Go.setDisable(true); 
+                    Colors.setDisable(true); 
+                    Shapes.setDisable(true);
+                    numShapes.setDisable(true);
+                    //turn on access so player can begin guessing shapes
+                    Flip.setDisable(false); 
+                    Choices.setDisable(false);
+                    
+                }catch ( ArrayIndexOutOfBoundsException aiobe ){ 
+                    aiobe.printStackTrace(System.err);
+                }
+            }
+       });
+        
+        Flip.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent event ) {
+		try {
+                    int currentItr = 0;
+                    
+                    //shuffle the order of their choices here
+                    Collections.shuffle(shuffledChoices);
+                    //iterate through each shape the user chooses to guess with
+                    currentShape = Choices.getValue().toString(); 
+                    String [] chosenTwoWords = currentShape.split(" ");
+                    String chosenColorWord = chosenTwoWords[0];
+                    String chosenShapeWord = chosenTwoWords[1];
+                    
+                    //splitting shape & color to compare by shape first
+                    String currentStr = (shuffledChoices.get(currentItr));
+                    //first word is the "color" second word is the "shape"
+                    String [] twoWords = currentStr.split(" "); 
+                    
+                    String colorWord = twoWords[0];
+                    String shapeWord = twoWords[1];
+                    System.out.println(shapeWord);
+                    
+                    //this is where we test if what the user guessed is correct or not
+                    //we should instead print this to the screen instead of the command line
+                    if((chosenColorWord.equals(colorWord)) && (chosenShapeWord.equals(shapeWord))){
+                        System.out.println("You guessed correctly!");
+                        score++; //if correct, their score goes up
+                    } else {
+                        System.out.println("You guessed incorrectly");
+                    }
+
+                        switch(numberOfShapes){
+                            case 3:
+                                // Card 1/3
+                                if(timeThrough == 0){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v3.setVisible(true);
+                                        c3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v3.setVisible(true);
+                                        e3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v3.setVisible(true);
+                                        t3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v3.setVisible(true);
+                                        s3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v3.setVisible(true);
+                                        r3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v3.setVisible(true);
+                                        d3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d3.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 1;
+                                } // Card 2/3
+                                if(timeThrough == 1){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v4.setVisible(true);
+                                        c4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v4.setVisible(true);
+                                        e4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v4.setVisible(true);
+                                        t4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v4.setVisible(true);
+                                        s4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v4.setVisible(true);
+                                        r4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v4.setVisible(true);
+                                        d4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d4.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 2;
+                                } // Card 3/3
+                                if(timeThrough == 2){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v5.setVisible(true);
+                                        c5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v5.setVisible(true);
+                                        e5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v5.setVisible(true);
+                                        t5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v5.setVisible(true);
+                                        s5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v5.setVisible(true);
+                                        r5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v5.setVisible(true);
+                                        d5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d5.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 3; 
+                                    //when they get through all 3 cards the game should
+                                    //print their final score then automatically restart
+                                }
+                                ++timeThrough;
+                                System.out.println("Your final score is: " + score);
+                                break;
+                            case 5:
+                                // Card 1/5
+                                if(timeThrough == 0){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v2.setVisible(true);
+                                        c2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c2.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v2.setVisible(true);
+                                        e2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e2.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v2.setVisible(true);
+                                        t2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t2.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v2.setVisible(true);
+                                        s2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s2.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v2.setVisible(true);
+                                        r2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r2.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v2.setVisible(true);
+                                        d2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d2.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 1;
+                                } // Card 2/5
+                                if(timeThrough == 1){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v3.setVisible(true);
+                                        c3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v3.setVisible(true);
+                                        e3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v3.setVisible(true);
+                                        t3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v3.setVisible(true);
+                                        s3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v3.setVisible(true);
+                                        r3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v3.setVisible(true);
+                                        d3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d3.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 2;
+                                } // Card 3/5
+                                if(timeThrough == 2){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v4.setVisible(true);
+                                        c4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v4.setVisible(true);
+                                        e4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v4.setVisible(true);
+                                        t4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v4.setVisible(true);
+                                        s4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v4.setVisible(true);
+                                        r4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v4.setVisible(true);
+                                        d4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d4.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 3;
+                                } // Card 4/5
+                                if(timeThrough == 3){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v5.setVisible(true);
+                                        c5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v5.setVisible(true);
+                                        e5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v5.setVisible(true);
+                                        t5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v5.setVisible(true);
+                                        s5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v5.setVisible(true);
+                                        r5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v5.setVisible(true);
+                                        d5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d5.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 4;
+                                } // Card 5/5
+                                if(timeThrough == 4){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v6.setVisible(true);
+                                        c6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c6.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v6.setVisible(true);
+                                        e6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e6.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v6.setVisible(true);
+                                        t6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t6.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v6.setVisible(true);
+                                        s6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s6.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v6.setVisible(true);
+                                        r6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r6.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v6.setVisible(true);
+                                        d6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d6.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 5;
+                                    //when they get through all 5 cards the game should
+                                    //print their final score then automatically restart
+                                }
+                                ++timeThrough;
+                                System.out.println("Your final score is: " + score);
+                                break;
+                            case 7:
+                                // Card 1/7
+                                if(timeThrough == 0){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v1.setVisible(true);
+                                        c1.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c1.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c1.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c1.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c1.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c1.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c1.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v1.setVisible(true);
+                                        e1.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e1.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e1.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e1.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e1.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e1.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e1.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v1.setVisible(true);
+                                        t2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t1.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t1.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t1.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t1.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t1.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t1.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v1.setVisible(true);
+                                        s1.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s1.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s1.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s1.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s1.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s1.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s1.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v1.setVisible(true);
+                                        r1.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r1.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r1.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r1.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r1.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r1.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r1.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v1.setVisible(true);
+                                        d1.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d1.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d1.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d1.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d1.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d1.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d1.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 1;
+                                } 
+                                // Card 2/7
+                                if(timeThrough == 1){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v2.setVisible(true);
+                                        c2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c2.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v2.setVisible(true);
+                                        e2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e2.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v2.setVisible(true);
+                                        t2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t2.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v2.setVisible(true);
+                                        s2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s2.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v2.setVisible(true);
+                                        r2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r2.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v2.setVisible(true);
+                                        d2.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d2.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d2.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d2.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d2.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d2.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d2.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 2;
+                                } // Card 3/7
+                                if(timeThrough == 2){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v3.setVisible(true);
+                                        c3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v3.setVisible(true);
+                                        e3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v3.setVisible(true);
+                                        t3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v3.setVisible(true);
+                                        s3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v3.setVisible(true);
+                                        r3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r3.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v3.setVisible(true);
+                                        d3.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d3.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d3.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d3.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d3.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d3.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d3.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 3;
+                                } // Card 4/7
+                                if(timeThrough == 3){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v4.setVisible(true);
+                                        c4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v4.setVisible(true);
+                                        e4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v4.setVisible(true);
+                                        t4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v4.setVisible(true);
+                                        s4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v4.setVisible(true);
+                                        r4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r4.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v4.setVisible(true);
+                                        d4.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d4.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d4.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d4.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d4.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d4.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d4.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 4;
+                                } // Card 5/7
+                                if(timeThrough == 4){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v5.setVisible(true);
+                                        c5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v5.setVisible(true);
+                                        e5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v5.setVisible(true);
+                                        t5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v5.setVisible(true);
+                                        s5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v5.setVisible(true);
+                                        r5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r5.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v5.setVisible(true);
+                                        d5.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d5.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d5.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d5.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d5.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d5.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d5.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 5;
+                                } // Card 6/7
+                                if(timeThrough == 5){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v6.setVisible(true);
+                                        c6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c6.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v6.setVisible(true);
+                                        e6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e6.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v6.setVisible(true);
+                                        t6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t6.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v6.setVisible(true);
+                                        s6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s6.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v6.setVisible(true);
+                                        r6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r6.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v6.setVisible(true);
+                                        d6.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d6.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d6.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d6.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d6.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d6.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d6.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 6;
+                                } // Card 7/7
+                                if(timeThrough == 6){
+                                    if("Circle".equals(shapeWord)){ // Circle
+                                        v7.setVisible(true);
+                                        c7.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            c7.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            c7.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            c7.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            c7.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            c7.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            c7.setFill(Color.VIOLET);
+                                        }
+                                    }if("Oval".equals(shapeWord)){ // Oval
+                                        v7.setVisible(true);
+                                        e7.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            e7.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            e7.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            e7.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            e7.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            e7.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            e7.setFill(Color.VIOLET);
+                                        }
+                                    }if("Triangle".equals(shapeWord)){ //Triangle
+                                        v7.setVisible(true);
+                                        t7.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            t7.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            t7.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            t7.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            t7.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            t7.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            t7.setFill(Color.VIOLET);
+                                        }
+                                    }if("Square".equals(shapeWord)){ // Square
+                                        v7.setVisible(true);
+                                        s7.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            s7.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            s7.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            s7.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            s7.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            s7.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            s7.setFill(Color.VIOLET);
+                                        }
+                                    }if("Rectangle".equals(shapeWord)){ // Rectangle
+                                        v7.setVisible(true);
+                                        r7.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            r7.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            r7.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            r7.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            r7.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            r7.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            r7.setFill(Color.VIOLET);
+                                        }
+                                    }if("Diamond".equals(shapeWord)){ // Diamond
+                                        v7.setVisible(true);
+                                        d7.setVisible(true);
+                                        if("red".equals(colorWord)){
+                                            d7.setFill(Color.RED);
+                                        }if("orange".equals(colorWord)){
+                                            d7.setFill(Color.ORANGE);
+                                        }if("yellow".equals(colorWord)){
+                                            d7.setFill(Color.YELLOW);
+                                        }if("green".equals(colorWord)){
+                                            d7.setFill(Color.GREEN);
+                                        }if("blue".equals(colorWord)){
+                                            d7.setFill(Color.BLUE);
+                                        }if("violet".equals(colorWord)){
+                                            d7.setFill(Color.VIOLET);
+                                        }
+                                    }
+//                                    timeThrough = 7; 
+                                    //when they get through all 7 cards the game should
+                                    //print their final score then automatically restart
+                                }
+                                ++timeThrough;
+                                System.out.println("Your final score is: " + score);
+                                break;
+                        }
+                    currentItr++;
+		} catch ( Exception e ) {
+                    e.printStackTrace(System.err);
+		}
+            }
+	});
+        
+        Reset.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent event ) {
+		try {
+                   // kind of like quit, excpet the shapes choices,
+                   // score, and lists will reset so that the player
+                   // may begin a new game, maybe prompt a "are you sure?"
+                   // box thingy, incase they click this box by accident
+                   
+                   System.out.println("You have clicked on the Reset button");
+                   
+		} catch ( Exception e ) {
+                    e.printStackTrace(System.err);
+		}
+            }
+	});
+        
         
         quit.setOnAction( new EventHandler<ActionEvent>() {
             @Override
