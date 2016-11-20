@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import javafx.animation.FadeTransition;
+import javafx.animation.RotateTransition;
 import javafx.geometry.Insets;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -640,6 +641,14 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
                                         
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
+                                        
+                                        
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v3.setVisible(true);
                                         e3.setVisible(true);
@@ -662,6 +671,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v3.setVisible(true);
                                         t3.setVisible(true);
@@ -684,6 +700,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v3.setVisible(true);
                                         s3.setVisible(true);
@@ -706,6 +729,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v3.setVisible(true);
                                         r3.setVisible(true);
@@ -728,6 +758,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v3.setVisible(true);
                                         d3.setVisible(true);
@@ -750,6 +787,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 1;
                                 } // Card 2/3
@@ -776,6 +820,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v4.setVisible(true);
                                         e4.setVisible(true);
@@ -798,6 +849,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v4.setVisible(true);
                                         t4.setVisible(true);
@@ -820,6 +878,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v4.setVisible(true);
                                         s4.setVisible(true);
@@ -842,6 +907,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v4.setVisible(true);
                                         r4.setVisible(true);
@@ -864,6 +936,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v4.setVisible(true);
                                         d4.setVisible(true);
@@ -886,6 +965,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 2;
                                 } // Card 3/3
@@ -912,6 +998,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v5.setVisible(true);
                                         e5.setVisible(true);
@@ -934,6 +1027,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v5.setVisible(true);
                                         t5.setVisible(true);
@@ -956,6 +1056,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v5.setVisible(true);
                                         s5.setVisible(true);
@@ -978,6 +1085,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v5.setVisible(true);
                                         r5.setVisible(true);
@@ -1000,6 +1114,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v5.setVisible(true);
                                         d5.setVisible(true);
@@ -1022,6 +1143,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 3; 
                                     //when they get through all 3 cards the game should
@@ -1055,6 +1183,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v2.setVisible(true);
                                         e2.setVisible(true);
@@ -1077,6 +1212,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v2.setVisible(true);
                                         t2.setVisible(true);
@@ -1099,6 +1241,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v2.setVisible(true);
                                         s2.setVisible(true);
@@ -1121,6 +1270,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v2.setVisible(true);
                                         r2.setVisible(true);
@@ -1143,6 +1299,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v2.setVisible(true);
                                         d2.setVisible(true);
@@ -1165,6 +1328,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 1;
                                 } // Card 2/5
@@ -1191,6 +1361,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v3.setVisible(true);
                                         e3.setVisible(true);
@@ -1213,6 +1390,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v3.setVisible(true);
                                         t3.setVisible(true);
@@ -1235,6 +1419,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v3.setVisible(true);
                                         s3.setVisible(true);
@@ -1257,6 +1448,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v3.setVisible(true);
                                         r3.setVisible(true);
@@ -1279,6 +1477,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v3.setVisible(true);
                                         d3.setVisible(true);
@@ -1301,6 +1506,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 2;
                                 } // Card 3/5
@@ -1327,6 +1539,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v4.setVisible(true);
                                         e4.setVisible(true);
@@ -1349,6 +1568,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v4.setVisible(true);
                                         t4.setVisible(true);
@@ -1371,6 +1597,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v4.setVisible(true);
                                         s4.setVisible(true);
@@ -1393,6 +1626,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v4.setVisible(true);
                                         r4.setVisible(true);
@@ -1415,6 +1655,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v4.setVisible(true);
                                         d4.setVisible(true);
@@ -1437,6 +1684,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 3;
                                 } // Card 4/5
@@ -1463,6 +1717,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v5.setVisible(true);
                                         e5.setVisible(true);
@@ -1485,6 +1746,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v5.setVisible(true);
                                         t5.setVisible(true);
@@ -1507,6 +1775,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v5.setVisible(true);
                                         s5.setVisible(true);
@@ -1529,6 +1804,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v5.setVisible(true);
                                         r5.setVisible(true);
@@ -1551,6 +1833,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v5.setVisible(true);
                                         d5.setVisible(true);
@@ -1573,6 +1862,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 4;
                                 } // Card 5/5
@@ -1599,6 +1895,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v6.setVisible(true);
                                         e6.setVisible(true);
@@ -1621,6 +1924,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v6.setVisible(true);
                                         t6.setVisible(true);
@@ -1643,6 +1953,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v6.setVisible(true);
                                         s6.setVisible(true);
@@ -1665,6 +1982,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v6.setVisible(true);
                                         r6.setVisible(true);
@@ -1687,6 +2011,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v6.setVisible(true);
                                         d6.setVisible(true);
@@ -1709,6 +2040,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 5;
                                     //when they get through all 5 cards the game should
@@ -1742,6 +2080,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v1);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v1.setVisible(true);
                                         e1.setVisible(true);
@@ -1764,9 +2109,16 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v1);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v1.setVisible(true);
-                                        t2.setVisible(true);
+                                        t1.setVisible(true);
                                         if("red".equals(colorWord)){
                                             t1.setFill(Color.RED);
                                         }if("orange".equals(colorWord)){
@@ -1786,6 +2138,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v1);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v1.setVisible(true);
                                         s1.setVisible(true);
@@ -1808,6 +2167,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v1);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v1.setVisible(true);
                                         r1.setVisible(true);
@@ -1830,6 +2196,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v1);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v1.setVisible(true);
                                         d1.setVisible(true);
@@ -1852,6 +2225,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v1);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 1;
                                 } 
@@ -1879,6 +2259,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v2.setVisible(true);
                                         e2.setVisible(true);
@@ -1901,6 +2288,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v2.setVisible(true);
                                         t2.setVisible(true);
@@ -1923,6 +2317,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v2.setVisible(true);
                                         s2.setVisible(true);
@@ -1945,6 +2346,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v2.setVisible(true);
                                         r2.setVisible(true);
@@ -1967,6 +2375,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v2.setVisible(true);
                                         d2.setVisible(true);
@@ -1989,6 +2404,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v2);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 2;
                                 } // Card 3/7
@@ -2015,6 +2437,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v3.setVisible(true);
                                         e3.setVisible(true);
@@ -2037,6 +2466,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v3.setVisible(true);
                                         t3.setVisible(true);
@@ -2059,6 +2495,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v3.setVisible(true);
                                         s3.setVisible(true);
@@ -2081,6 +2524,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v3.setVisible(true);
                                         r3.setVisible(true);
@@ -2103,6 +2553,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v3.setVisible(true);
                                         d3.setVisible(true);
@@ -2125,6 +2582,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v3);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 3;
                                 } // Card 4/7
@@ -2151,6 +2615,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v4.setVisible(true);
                                         e4.setVisible(true);
@@ -2173,6 +2644,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v4.setVisible(true);
                                         t4.setVisible(true);
@@ -2195,6 +2673,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v4.setVisible(true);
                                         s4.setVisible(true);
@@ -2217,6 +2702,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v4.setVisible(true);
                                         r4.setVisible(true);
@@ -2239,6 +2731,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v4.setVisible(true);
                                         d4.setVisible(true);
@@ -2261,6 +2760,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v4);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 4;
                                 } // Card 5/7
@@ -2287,6 +2793,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v5.setVisible(true);
                                         e5.setVisible(true);
@@ -2309,6 +2822,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v5.setVisible(true);
                                         t5.setVisible(true);
@@ -2331,6 +2851,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v5.setVisible(true);
                                         s5.setVisible(true);
@@ -2353,6 +2880,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v5.setVisible(true);
                                         r5.setVisible(true);
@@ -2375,6 +2909,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v5.setVisible(true);
                                         d5.setVisible(true);
@@ -2397,6 +2938,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v5);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 5;
                                 } // Card 6/7
@@ -2423,6 +2971,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v6.setVisible(true);
                                         e6.setVisible(true);
@@ -2445,6 +3000,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v6.setVisible(true);
                                         t6.setVisible(true);
@@ -2467,6 +3029,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v6.setVisible(true);
                                         s6.setVisible(true);
@@ -2489,6 +3058,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v6.setVisible(true);
                                         r6.setVisible(true);
@@ -2511,6 +3087,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v6.setVisible(true);
                                         d6.setVisible(true);
@@ -2533,6 +3116,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v6);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 6;
                                 } // Card 7/7
@@ -2559,6 +3149,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v7);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v7.setVisible(true);
                                         e7.setVisible(true);
@@ -2581,6 +3178,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v7);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Triangle".equals(shapeWord)){ //Triangle
                                         v7.setVisible(true);
                                         t7.setVisible(true);
@@ -2603,6 +3207,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v7);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Square".equals(shapeWord)){ // Square
                                         v7.setVisible(true);
                                         s7.setVisible(true);
@@ -2625,6 +3236,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v7);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Rectangle".equals(shapeWord)){ // Rectangle
                                         v7.setVisible(true);
                                         r7.setVisible(true);
@@ -2647,6 +3265,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v7);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }if("Diamond".equals(shapeWord)){ // Diamond
                                         v7.setVisible(true);
                                         d7.setVisible(true);
@@ -2669,6 +3294,13 @@ public class TheShapesAreRight extends Application {
                                         fadeTransition.setFromValue(0.0);
                                         fadeTransition.setToValue(1.0);
                                         fadeTransition.play();
+                                        
+                                        RotateTransition rotateTransition = new RotateTransition();
+                                        rotateTransition.setDuration( new Duration(4000));
+                                        rotateTransition.setNode(v7);
+                                        rotateTransition.setFromAngle(0.0);
+                                        rotateTransition.setToAngle(720.0);
+                                        rotateTransition.play();
                                     }
 //                                    timeThrough = 7; 
                                     //when they get through all 7 cards the game should
