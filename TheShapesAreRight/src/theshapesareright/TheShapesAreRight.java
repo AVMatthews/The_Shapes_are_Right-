@@ -3,6 +3,7 @@ package theshapesareright;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import javafx.animation.FadeTransition;
 import javafx.geometry.Insets;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -27,14 +28,16 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.util.Callback;
+import javafx.util.Duration;
 
 
 /**
  *
- * @author abigail
+ * @author Abigail Matthews & Kristina Kolibab
  */
 public class TheShapesAreRight extends Application {
     
@@ -52,6 +55,7 @@ public class TheShapesAreRight extends Application {
         ListView<String> Shapes = new ListView<String>(shapes);
         Shapes.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         Shapes.setPrefWidth(150);
+        Shapes.setCenterShape(true);
         
         //rectangles
         Rectangle r1 = new Rectangle();
@@ -470,7 +474,7 @@ public class TheShapesAreRight extends Application {
         
         HBox FlipBox = new HBox();
 	FlipBox.getStyleClass().add("graytheme");
-        FlipBox.setPadding(new Insets(5, 5, 5, 305));
+        FlipBox.setPadding(new Insets(5, 5, 5, 285));
         
         FlipBox.getChildren().add(Flip);
         
@@ -507,7 +511,8 @@ public class TheShapesAreRight extends Application {
         root.add(InputBox, 0, 3);
         root.add(ButtonBox, 0, 4);
                 
-        Scene scene = new Scene(root, 655, 455);
+        Scene scene = new Scene(root, 655, 460);
+        scene.getStylesheets().add( getClass().getResource("DarkTheme.css").toExternalForm() );
         
                 
         Go.setOnAction( new EventHandler<ActionEvent>(){
@@ -628,6 +633,13 @@ public class TheShapesAreRight extends Application {
                                         }if("violet".equals(colorWord)){
                                             c3.setFill(Color.VIOLET);
                                         }
+                                        FadeTransition fadeTransition = new FadeTransition();
+                                        fadeTransition.setDuration( new Duration(2000));
+                                        fadeTransition.setNode(c3);
+                                        fadeTransition.setFromValue(0.0);
+                                        fadeTransition.setToValue(1.0);
+                                        fadeTransition.play();
+                                        
                                     }if("Oval".equals(shapeWord)){ // Oval
                                         v3.setVisible(true);
                                         e3.setVisible(true);
