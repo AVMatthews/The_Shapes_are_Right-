@@ -36,6 +36,9 @@ import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.util.Callback;
 import javafx.util.Duration;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Collections;
 
 /**
  *
